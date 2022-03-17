@@ -24,7 +24,7 @@
      <rect>
       <x>80</x>
       <y>60</y>
-      <width>161</width>
+      <width>191</width>
       <height>21</height>
      </rect>
     </property>
@@ -87,7 +87,7 @@
      <rect>
       <x>80</x>
       <y>190</y>
-      <width>201</width>
+      <width>221</width>
       <height>31</height>
      </rect>
     </property>
@@ -125,6 +125,24 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
+   <widget class="QLabel" name="MS_erreur">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>420</y>
+      <width>321</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -132,7 +150,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>651</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>

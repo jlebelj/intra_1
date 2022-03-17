@@ -37,15 +37,16 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
 
     @QtCore.pyqtSlot()
     def on_ButtonOk_clicked(self):
-        #self.lblOUT.setText("Bonjour " + Texte)
         num_E = self.line_num.t()
         nom_E = self.line_nom.text()
-
         if valider_num(num_E) and valider_num(nom_E):
             Etud = Etudiant(nom_E, num_E)
             lst_Etudiant.append(Etud)
             self.TB_answer.setText(Etud.__str__())
-        else :
+        else :# afficher message d'erreur
+            self.line_num.clear()
+            self.line_nom.clear()
+
 
 
 
@@ -58,6 +59,7 @@ def main():
     form = FenetreQt()
     form.show()
     app.exec()
+
 if __name__ == "__main__":
     main()
 
