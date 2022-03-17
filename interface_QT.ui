@@ -19,7 +19,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="l_nom">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -39,7 +39,7 @@
      <string>nom de l`etudiant :</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="line_nom">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -69,7 +69,7 @@
      <string>Valider</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="line_num">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -82,7 +82,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="l_num">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -98,7 +98,7 @@
      </font>
     </property>
     <property name="text">
-     <string>prenom de l`etudiant :</string>
+     <string>Numero de l`etudiant :</string>
     </property>
    </widget>
    <widget class="QTextBrowser" name="TB_answer">
