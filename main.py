@@ -16,13 +16,13 @@ lst_Etudiant = []
 from PyQt5 import QtWidgets, QtCore
 
 
-def valider_num(nom_E):
+def valider_nom(nom_E):
     if nom_E.isalpha() == True:
         return True
     else:
         return False
 
-def valider_nom(num_E):
+def valider_num(num_E):
     try:
         int(num_E)
     except:
@@ -31,6 +31,8 @@ def valider_nom(num_E):
         return True
 
 
+
+# Classe QT designer
 class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
     def __init__(self, parent = None):
         super(FenetreQt, self).__init__(parent)
@@ -40,14 +42,18 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
     def on_ButtonOk_clicked(self):
         num_E = self.line_num.text()
         nom_E = self.line_nom.text()
-        if valider_num(num_E) and valider_num(nom_E): # deux fois meme fonction
-            etud = Etudiant(nom_E, num_E)
+        programme_E = self.CB_choix.text()
+        if valider_num(num_E) and valider_nom(nom_E):
+            etud = Etudiant(nom_E, num_E, programme_E)
             lst_Etudiant.append(etud)
-            self.TB_answer.setText(etud.__str__())
+            for e in lst_Etudiant:
+                self.TB_answer.setText(e.__str__())
+
         else :
+            self.MS_erreur.setText("Erreur! Donnees entrees incorrectes")
             self.line_num.clear()
             self.line_nom.clear()
-            self.MS_erreur.setText("Erreure! Donnes entrees incorrectes")
+
 
 
 

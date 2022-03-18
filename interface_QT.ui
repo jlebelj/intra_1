@@ -22,8 +22,8 @@
    <widget class="QLabel" name="l_nom">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>60</y>
+      <x>20</x>
+      <y>10</y>
       <width>191</width>
       <height>21</height>
      </rect>
@@ -42,8 +42,8 @@
    <widget class="QLineEdit" name="line_nom">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>90</y>
+      <x>20</x>
+      <y>40</y>
       <width>251</width>
       <height>51</height>
      </rect>
@@ -52,8 +52,8 @@
    <widget class="QPushButton" name="ButtonOk">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>300</y>
+      <x>20</x>
+      <y>240</y>
       <width>81</width>
       <height>41</height>
      </rect>
@@ -66,14 +66,14 @@
      </font>
     </property>
     <property name="text">
-     <string>Valider</string>
+     <string>Ajouter</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="line_num">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>230</y>
+      <x>20</x>
+      <y>130</y>
       <width>251</width>
       <height>51</height>
      </rect>
@@ -85,8 +85,8 @@
    <widget class="QLabel" name="l_num">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>190</y>
+      <x>20</x>
+      <y>100</y>
       <width>221</width>
       <height>31</height>
      </rect>
@@ -104,10 +104,10 @@
    <widget class="QTextBrowser" name="TB_answer">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>300</y>
-      <width>256</width>
-      <height>171</height>
+      <x>310</x>
+      <y>280</y>
+      <width>341</width>
+      <height>201</height>
      </rect>
     </property>
     <property name="font">
@@ -142,6 +142,26 @@ p, li { white-space: pre-wrap; }
     <property name="text">
      <string/>
     </property>
+   </widget>
+   <widget class="QComboBox" name="CB_choix">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>190</y>
+      <width>181</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Programmation</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Reseaux</string>
+     </property>
+    </item>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

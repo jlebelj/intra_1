@@ -1,8 +1,9 @@
 
 class Etudiant:
-    def __init__(self, nom_etudiant: str, numero_etudiant: int):
+    def __init__(self, nom_etudiant: str, numero_etudiant: int, programme_etudiant):
         self.nom = nom_etudiant
         self.num = numero_etudiant
+        self.programme = programme_etudiant
 
 
     def __str__(self):
@@ -12,5 +13,6 @@ class Etudiant:
         output += (" ")
         output += (f"Nom de l`etudiant: {self.nom}")
         output += (" ")
+        output += (f"Programme de l'etudiant: {self.programme}")
         output += ("****************************************")
         return output
