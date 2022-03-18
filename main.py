@@ -1,7 +1,7 @@
 
 #Importation du module sys nécessaire à l'exécution de l'application
 import sys
-
+import datetime
 #Importation du fichier du ui converti en pv
 import classe
 import code_interface_genere as F
@@ -11,6 +11,9 @@ from classe import *
 
 # declaration des donnees globale
 lst_Etudiant = []
+currentDateTime = datetime.datetime.now()
+date = currentDateTime.date()
+date_auj = date.strftime("%Y")
 
 #Importation des librairies nécessaires à QtDesigne
 from PyQt5 import QtWidgets, QtCore
@@ -39,15 +42,17 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
         self.setupUi(self)
         self.setWindowTitle("Gestion de scolarité")
     @QtCore.pyqtSlot()
-    def on_ButtonOk_clicked(self):
+    def on_BT_ajouter_clicked(self):
         num_E = self.line_num.text()
         nom_E = self.line_nom.text()
-        programme_E = self.CB_choix.text()
+        programme_E = self.CB_choix.currentText()
+        age_E = self.DE_age.date().year()
+        age_E = date_auj - age_E
         if valider_num(num_E) and valider_nom(nom_E):
-            etud = Etudiant(nom_E, num_E, programme_E)
+            etud = Etudiant(nom_E, num_E, programme_E, age_E)
             lst_Etudiant.append(etud)
             for e in lst_Etudiant:
-                self.TB_answer.setText(e.__str__())
+                self.TB_answer.append(e.__str__())
 
         else :
             self.MS_erreur.setText("Erreur! Donnees entrees incorrectes")
