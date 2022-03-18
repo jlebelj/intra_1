@@ -11,9 +11,11 @@ from classe import *
 
 # declaration des donnees globale
 lst_Etudiant = []
+
 currentDateTime = datetime.datetime.now()
 date = currentDateTime.date()
-date_auj = date.strftime("%Y")
+date_auj = int(date.strftime("%Y"))
+
 
 #Importation des librairies nécessaires à QtDesigne
 from PyQt5 import QtWidgets, QtCore
@@ -46,18 +48,23 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
         num_E = self.line_num.text()
         nom_E = self.line_nom.text()
         programme_E = self.CB_choix.currentText()
-        age_E = self.DE_age.date().year()
-        age_E = date_auj - age_E
+        date_N = self.DE_age.date().year()
+        age_E = date_auj - date_N
         if valider_num(num_E) and valider_nom(nom_E):
             etud = Etudiant(nom_E, num_E, programme_E, age_E)
             lst_Etudiant.append(etud)
+            self.TB_answer.clear()
             for e in lst_Etudiant:
                 self.TB_answer.append(e.__str__())
 
-        else :
+        else:
             self.MS_erreur.setText("Erreur! Donnees entrees incorrectes")
             self.line_num.clear()
             self.line_nom.clear()
+
+
+    @QtCore.pyqtSlot()
+    def on_BT_modifier_clicked(self):
 
 
 
