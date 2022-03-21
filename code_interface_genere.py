@@ -87,7 +87,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.BT_modifier.setFont(font)
-        self.BT_modifier.setObjectName("BT_mofifier")
+        self.BT_modifier.setObjectName("BT_modifier")
         self.BT_sauvegarder = QtWidgets.QPushButton(self.centralwidget)
         self.BT_sauvegarder.setGeometry(QtCore.QRect(20, 400, 141, 31))
         font = QtGui.QFont()
