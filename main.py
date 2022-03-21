@@ -77,6 +77,10 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
                 if e.num == num_E:
                     e.programme = programme_E
                     e.nom = nom_E
+                    self.TB_answer.clear()
+                    for e in lst_Etudiant:
+                        self.TB_answer.append(e.__str__())
+                    print("E")
 
 
 
@@ -91,24 +95,27 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
 
 
 
-"""    @QtCore.pyqtSlot()
+    @QtCore.pyqtSlot()
     def on_BT_supprimer(self):
+        print("A")
         num_E = self.line_num.text()
-        nom_E = self.line_nom.text()
         print("B")
-        if valider_num(num_E) and valider_nom(nom_E):
+        if valider_num(num_E):
+            print("C")
             for e in lst_Etudiant:
-                if num_E == e.:
-                    num_E =
-                    nom_E =
-                    programme_E =
+                if num_E == e.num:
+                    lst_Etudiant.remove(e)
+                    self.TB_answer.clear()
+                    for e in lst_Etudiant:
+                        self.TB_answer.append(e.__str__())
+                    print("d")
 
 
 
         else:
-        self.MS_erreur.setText("Erreur! Donnees entrees incorrectes")
-        self.line_num.clear()
-        self.line_nom.clear()"""
+            self.MS_erreur.setText("Erreur! Donnees entrees incorrectes")
+            self.line_num.clear()
+            self.line_nom.clear()
 
 
 
