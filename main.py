@@ -43,6 +43,7 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
         super(FenetreQt, self).__init__(parent)
         self.setupUi(self)
         self.setWindowTitle("Gestion de scolarité")
+
     @QtCore.pyqtSlot()
     def on_BT_ajouter_clicked(self):
         num_E = self.line_num.text()
@@ -51,71 +52,67 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
         date_N = self.DE_age.date().year() # date naissance etudiant
         age_E = date_auj - date_N # age etudiant
         if valider_num(num_E) and valider_nom(nom_E):
+
             etud = Etudiant(nom_E, num_E, programme_E, age_E)
             lst_Etudiant.append(etud)
             self.TB_answer.clear()
             for e in lst_Etudiant:
                 self.TB_answer.append(e.__str__())
-
         else:
             self.MS_erreur.setText("Erreur! Donnees entrees incorrectes")
             self.line_num.clear()
             self.line_nom.clear()
 
 
+
     @QtCore.pyqtSlot()
     def on_BT_modifier_clicked(self):
-        print("A")
         num_E = self.line_num.text()
         nom_E = self.line_nom.text()
         programme_E = self.CB_choix.currentText()
-        print("B")
         if valider_num(num_E) and valider_nom(nom_E):
-            print("C")
             for e in lst_Etudiant:
-                print("D")
                 if e.num == num_E:
                     e.programme = programme_E
                     e.nom = nom_E
                     self.TB_answer.clear()
                     for e in lst_Etudiant:
                         self.TB_answer.append(e.__str__())
-                    print("E")
-
-
-
-
         else:
             self.MS_erreur.setText("Erreur! Donnees entrees incorrectes")
             self.line_num.clear()
             self.line_nom.clear()
-
-
-
+            self.TB_answer.clear()
 
 
 
     @QtCore.pyqtSlot()
-    def on_BT_supprimer(self):
-        print("A")
+    def on_BT_supprimer_clicked(self):
         num_E = self.line_num.text()
-        print("B")
         if valider_num(num_E):
-            print("C")
             for e in lst_Etudiant:
                 if num_E == e.num:
                     lst_Etudiant.remove(e)
                     self.TB_answer.clear()
                     for e in lst_Etudiant:
                         self.TB_answer.append(e.__str__())
-                    print("d")
-
-
-
         else:
             self.MS_erreur.setText("Erreur! Donnees entrees incorrectes")
             self.line_num.clear()
             self.line_nom.clear()
+
+
+
+    @QtCore.pyqtSlot()
+    def on_BT_sauvegarder_clicked(self):
+        num_E = self.line_num.text()
+        nom_E = self.line_nom.text()
+        date_N = self.DE_age.date().year()
+        age_E = age_E = date_auj - date_N
+        programme_E = self.CB_choix.currentText()
+        with open("f.txt", "w") as f:
+            f.write(self.TB_answer.toPlainText())
+
 
 
 
