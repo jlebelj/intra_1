@@ -101,7 +101,7 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
             self.line_num.clear()
             self.line_nom.clear()
 
-
+    self.TB_answer.text()
 
     @QtCore.pyqtSlot()
     def on_BT_sauvegarder_clicked(self):
