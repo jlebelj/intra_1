@@ -177,7 +177,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>360</y>
+      <y>400</y>
       <width>121</width>
       <height>31</height>
      </rect>
@@ -216,7 +216,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>400</y>
+      <y>440</y>
       <width>141</width>
       <height>31</height>
      </rect>
@@ -229,6 +229,25 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>Sauvegarder</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="BT_voir_liste">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>360</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>voir liste</string>
     </property>
    </widget>
   </widget>

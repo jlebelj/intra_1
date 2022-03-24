@@ -44,6 +44,8 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
         self.setupUi(self)
         self.setWindowTitle("Gestion de scolarité")
 
+
+
     @QtCore.pyqtSlot()
     def on_BT_ajouter_clicked(self):
         num_E = self.line_num.text()
@@ -101,7 +103,7 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
             self.line_num.clear()
             self.line_nom.clear()
 
-    self.TB_answer.text()
+
 
     @QtCore.pyqtSlot()
     def on_BT_sauvegarder_clicked(self):
@@ -112,6 +114,14 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
         programme_E = self.CB_choix.currentText()
         with open("f.txt", "w") as f:
             f.write(self.TB_answer.toPlainText())
+
+
+
+    @QtCore.pyqtSlot()
+    def on_BT_voir_liste(self):
+
+
+
 
 
 
