@@ -3,8 +3,11 @@
 import sys
 import datetime
 #Importation du fichier du ui converti en pv
+from PyQt5.QtGui import QStandardItemModel
+
 import classe
 import code_interface_genere as F
+import code_interface_pop
 
 # importation des classes necessaires
 from classe import *
@@ -35,6 +38,8 @@ def valider_num(num_E):
     else:
         return True
 
+def valider_age(age_E):
+    pass
 
 
 # Classe QT designer
@@ -43,8 +48,6 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
         super(FenetreQt, self).__init__(parent)
         self.setupUi(self)
         self.setWindowTitle("Gestion de scolarité")
-
-
 
     @QtCore.pyqtSlot()
     def on_BT_ajouter_clicked(self):
@@ -65,8 +68,6 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
             self.line_num.clear()
             self.line_nom.clear()
 
-
-
     @QtCore.pyqtSlot()
     def on_BT_modifier_clicked(self):
         num_E = self.line_num.text()
@@ -86,8 +87,6 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
             self.line_nom.clear()
             self.TB_answer.clear()
 
-
-
     @QtCore.pyqtSlot()
     def on_BT_supprimer_clicked(self):
         num_E = self.line_num.text()
@@ -103,8 +102,6 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
             self.line_num.clear()
             self.line_nom.clear()
 
-
-
     @QtCore.pyqtSlot()
     def on_BT_sauvegarder_clicked(self):
         num_E = self.line_num.text()
@@ -117,10 +114,29 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
 
 
 
-    @QtCore.pyqtSlot()
-    def on_BT_voir_liste(self):
+    def on_BT_voir_liste_clicked(self):
+        dialog = Fenetre_list_view()
+        model = QStandardItemModel()
+        dialog.Pop_lst_e.setModel(model)
 
 
+
+
+
+
+
+        dialog.show()
+        dialog.exec_()
+
+
+
+
+
+# classe fenetre list view
+class Fenetre_list_view(QtWidgets.QDialog, code_interface_pop.Ui_Dialog):
+    def __init__(self, parent = None):
+        super(Fenetre_list_view, self).__init__(parent)
+        self.setupUi(self)
 
 
 

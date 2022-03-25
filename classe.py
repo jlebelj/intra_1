@@ -15,3 +15,5 @@ class Etudiant:
         output += (f"Age de l'etudiant: {self.age}\n")
         output += ("*************************\n")
         return output
+
+
