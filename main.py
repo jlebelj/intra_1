@@ -57,7 +57,6 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
         date_N = self.DE_age.date().year() # date naissance etudiant
         age_E = date_auj - date_N # age etudiant
         if valider_num(num_E) and valider_nom(nom_E):
-
             etud = Etudiant(nom_E, num_E, programme_E, age_E)
             lst_Etudiant.append(etud)
             self.TB_answer.clear()
