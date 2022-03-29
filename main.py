@@ -23,24 +23,12 @@ date_auj = int(date.strftime("%Y"))         #
 #Importation des librairies nécessaires à QtDesigne
 from PyQt5 import QtWidgets, QtCore
 
-
-def valider_nom(nom_E):
-    if nom_E.isalpha() == True:
-        return True
-    else:
-        return False
-
-def valider_num(num_E):
-    try:
-        int(num_E)
-    except:
-        return False
-    else:
-        return True
-
-def valider_age(age_E):
-    pass
-
+def verifier_etudiant(num_E):
+    for e in lst_Etudiant:
+        if e.count > 0:
+            return True
+        else:
+            return True
 
 # Classe QT designer
 class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
@@ -111,19 +99,13 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
         with open("f.txt", "w") as f:
             f.write(self.TB_answer.toPlainText())
 
-
-
     def on_BT_voir_liste_clicked(self):
         dialog = Fenetre_list_view()
         model = QStandardItemModel()
         dialog.Pop_lst_e.setModel(model)
-
-
-
-
-
-
-
+        for e in lst_Etudiant:
+            item = (e.num + "*" + e.nom + "*" + e.age + "*" + e.programme)
+            model.appendRow(item)
         dialog.show()
         dialog.exec_()
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>651</width>
-    <height>529</height>
+    <width>788</width>
+    <height>517</height>
    </rect>
   </property>
   <property name="font">
@@ -22,7 +22,7 @@
    <widget class="QLabel" name="l_nom">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>50</x>
       <y>10</y>
       <width>191</width>
       <height>21</height>
@@ -36,14 +36,14 @@
      </font>
     </property>
     <property name="text">
-     <string>nom de l`etudiant :</string>
+     <string>Nom de l`etudiant :</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="line_nom">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>40</y>
+      <y>30</y>
       <width>251</width>
       <height>51</height>
      </rect>
@@ -72,8 +72,8 @@
    <widget class="QLineEdit" name="line_num">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>130</y>
+      <x>520</x>
+      <y>30</y>
       <width>251</width>
       <height>51</height>
      </rect>
@@ -85,8 +85,8 @@
    <widget class="QLabel" name="l_num">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>100</y>
+      <x>540</x>
+      <y>0</y>
       <width>221</width>
       <height>31</height>
      </rect>
@@ -104,8 +104,8 @@
    <widget class="QTextBrowser" name="TB_answer">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>280</y>
+      <x>440</x>
+      <y>260</y>
       <width>341</width>
       <height>201</height>
      </rect>
@@ -125,12 +125,12 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLabel" name="MS_erreur">
+   <widget class="QLabel" name="MS_erreur_num">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>10</y>
-      <width>321</width>
+      <x>490</x>
+      <y>90</y>
+      <width>291</width>
       <height>41</height>
      </rect>
     </property>
@@ -146,8 +146,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QComboBox" name="CB_choix">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>190</y>
+      <x>310</x>
+      <y>30</y>
       <width>181</width>
       <height>41</height>
      </rect>
@@ -167,7 +167,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>240</y>
+      <y>160</y>
       <width>131</width>
       <height>31</height>
      </rect>
@@ -250,13 +250,39 @@ p, li { white-space: pre-wrap; }
      <string>voir liste</string>
     </property>
    </widget>
+   <widget class="QLabel" name="MS_erreur_nom">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>90</y>
+      <width>271</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="MS_erreur_age">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>200</y>
+      <width>271</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>651</width>
+     <width>788</width>
      <height>26</height>
     </rect>
    </property>
