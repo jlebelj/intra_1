@@ -39,21 +39,38 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
 
     @QtCore.pyqtSlot()
     def on_BT_ajouter_clicked(self):
+        etud = Etudiant()
         num_E = self.line_num.text()
         nom_E = self.line_nom.text()
         programme_E = self.CB_choix.currentText()
         date_N = self.DE_age.date().year() # date naissance etudiant
         age_E = date_auj - date_N # age etudiant
-        if valider_num(num_E) and valider_nom(nom_E):
-            etud = Etudiant(nom_E, num_E, programme_E, age_E)
-            lst_Etudiant.append(etud)
-            self.TB_answer.clear()
-            for e in lst_Etudiant:
-                self.TB_answer.append(e.__str__())
+        #if valider_num(num_E) and valider_nom(nom_E):
+        if Etudiant.Age == date_N:
+            print("hit1")
+            Etudiant.Nom = nom_E
+            if Etudiant.Nom == nom_E:
+                print("hit2")
+                Etudiant.Num = num_E
+                if Etudiant.Num == num_E:
+                    print("hit3")
+                    etud = Etudiant(nom_E, num_E, programme_E, age_E)
+                    lst_Etudiant.append(etud)
+                    self.TB_answer.clear()
+                    for e in lst_Etudiant:
+                        self.TB_answer.append(e.__str__())
+                else:
+                    print("Mhit1")
+                    self.MS_erreur_num.setText("Erreur! Donnees entrees incorrectes")
+                    self.line_num.clear()
+            else:
+                print("Mhit2")
+                self.MS_erreur_num.setText("Erreur! Donnees entrees incorrectes")
+                self.line_num.clear()
         else:
-            self.MS_erreur.setText("Erreur! Donnees entrees incorrectes")
-            self.line_num.clear()
-            self.line_nom.clear()
+            print("Mhit3")
+            self.MS_erreur_age.setText("Erreur! Donnees entrees incorrectes")
+            self.line_age.clear()
 
     @QtCore.pyqtSlot()
     def on_BT_modifier_clicked(self):
