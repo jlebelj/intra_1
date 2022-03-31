@@ -20,8 +20,10 @@ class Etudiant:
     def get_nom(self):
         return self.__nom
     def set_nom(self, nom_E):
-        if nom_E.isalpha() == True:
+        if nom_E.isalpha():
             self.__nom = nom_E
+            print("Isalpha")
+        print("isnotalpha")
     Nom = property(get_nom, set_nom)
 
     def get_num(self):
@@ -34,9 +36,12 @@ class Etudiant:
     def get_age(self):
         return self.__age
     def set_age(self, date_N):
+        print("111")
         if datetime.date.today().year - date_N.year() > 18:
+            print("222")
             self.__age = datetime.date.today().year - date_N.year()
         elif datetime.date.today().year - date_N.year == 18:
+            print("3333")
             if datetime.date.today().month == date_N.month():
                 self.__age = datetime.date.today().year - date_N.year()
             elif datetime.date.today().month == date_N.month():
@@ -47,6 +52,7 @@ class Etudiant:
             else:
                 pass
         else:
+            print("non")
             pass
     Age = property(get_age, set_age)
 

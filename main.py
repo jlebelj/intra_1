@@ -43,36 +43,39 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
         num_E = self.line_num.text()
         nom_E = self.line_nom.text()
         programme_E = self.CB_choix.currentText()
-        date_N = self.DE_age.date().year() # date naissance etudiant
-        age_E = date_auj - date_N # age etudiant
+        date_N = self.DE_age.date() # date naissance etudiant
         #if valider_num(num_E) and valider_nom(nom_E):
-        if Etudiant.Age == date_N:
+        print("0")
+        etud.Age = date_N
+        print("0.1")
+        print(date_N)
+        if etud.Age == date_N:
             print("hit1")
-            Etudiant.Nom = nom_E
-            if Etudiant.Nom == nom_E:
+            etud.Nom = nom_E
+            print(etud.Nom)
+            if etud.Nom == nom_E:
                 print("hit2")
-                Etudiant.Num = num_E
-                if Etudiant.Num == num_E:
+                etud.Num = num_E
+                if etud.Num == num_E:
                     print("hit3")
-                    etud = Etudiant(nom_E, num_E, programme_E, age_E)
                     lst_Etudiant.append(etud)
                     self.TB_answer.clear()
                     for e in lst_Etudiant:
                         self.TB_answer.append(e.__str__())
                 else:
                     print("Mhit1")
-                    self.MS_erreur_num.setText("Erreur! Donnees entrees incorrectes")
+                    self.MS_erreur_num.setText("Erreur! Donnees entrees incorrectes1")
                     self.line_num.clear()
             else:
                 print("Mhit2")
-                self.MS_erreur_num.setText("Erreur! Donnees entrees incorrectes")
+                self.MS_erreur_num.setText("Erreur! Donnees entrees incorrectes2")
                 self.line_num.clear()
         else:
             print("Mhit3")
-            self.MS_erreur_age.setText("Erreur! Donnees entrees incorrectes")
+            self.MS_erreur_age.setText("Erreur! Donnees entrees incorrectes3")
             self.line_age.clear()
 
-    @QtCore.pyqtSlot()
+"""    @QtCore.pyqtSlot()
     def on_BT_modifier_clicked(self):
         num_E = self.line_num.text()
         nom_E = self.line_nom.text()
@@ -126,6 +129,7 @@ class FenetreQt(QtWidgets.QMainWindow,F.Ui_MainWindow):
         dialog.show()
         dialog.exec_()
 
+"""
 
 
 
