@@ -11,8 +11,9 @@ class Casier:
     def get_num_casier(self):
         return self.__num
     def set_num_casier(self, numero_casier):
-        if numero_casier[0].isalpha() and numero_casier[1:].isnumeric():
-            self.__num = numero_casier
+        if len(numero_casier) == 5:
+            if numero_casier[0].isalpha() and numero_casier[1:].isnumeric():
+                self.__num = numero_casier
     Num_casier = property(get_num_casier, set_num_casier)
 
     def get_prix(self):

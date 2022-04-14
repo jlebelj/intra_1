@@ -35,8 +35,7 @@ from Etudiant import *
 
 # Déclarer une liste d'étudiants
 ls_Etudiants = []
-lst_casier = []
-C1 = Casier("A1234", "Petit", "A", 20)
+C1 = Casier("a1234", "Petit", "A", 20)
 
 
 #######################################
@@ -55,8 +54,13 @@ def verifier_etudiant_liste(p_num):
     return False
 
 def verifier_lst_casier(num_casier):
-    for n in lst_casier:
-        if n == num_casier:
+    """
+        Vérifie si le casier existe dans la liste des casiers
+            :param num_casier:  le numéro du casier
+            :return: True si le casier est trouvé dans la liste des casiers et False sinon
+    """
+    for n in ls_Etudiants:
+        if n.casier.Num_casier == num_casier.lower():
             return True
     return False
 
@@ -107,7 +111,6 @@ class fenetrePrincipale(QtWidgets.QMainWindow, interfacegraphique.Ui_MainWindow)
     @pyqtSlot()
     # Bouton Ajouter
     def on_pushButton_ajouter_clicked(self):
-        print("A.0")
         """
         Gestionnaire d'évènement pour le bouton Ajouter
         """
@@ -123,11 +126,15 @@ class fenetrePrincipale(QtWidgets.QMainWindow, interfacegraphique.Ui_MainWindow)
         etud.Programme = self.comboBox_programme.currentText()
         cas.taille = self.CB_taille.currentText()
         cas.localisation = self.CB_localisation.currentText()
-        cas.Num_casier = self.line_num_c.text()
+        cas.Num_casier = self.line_num_c.text().lower()
         # Booleen qui nous informe si le numéro d'étudiant existe ou pas dans la liste des étudiants
         verifier_etudiant = verifier_etudiant_liste(etud.NumEtud)
+        verifier_casier = verifier_lst_casier(cas.Num_casier)
         # Si le numéro d'étudiant est valide mais existe déjà dans la liste des étudiants (on ne peut donc pas l'ajouter)
-        if verifier_etudiant is True :
+        if verifier_casier is True:
+            self.line_num_c.clear()
+            self.MS_e_num_c2.setVisible(True)
+        if verifier_etudiant is True:
             # Effacer le lineEdit du numéro étudiant et afficher le message d'erreur
             self.lineEdit_numero.clear()
             self.label_erreur_Etu_Existe.setVisible(True)
@@ -146,7 +153,8 @@ class fenetrePrincipale(QtWidgets.QMainWindow, interfacegraphique.Ui_MainWindow)
             self.line_num_c.clear()
             self.MS_e_num_c1.setVisible(True)
         # Si les informations entrées sont valides et l'étudiant n'existe pas dans la liste des étudiants
-        if etud.NomEtud != "" and etud.NumEtud != "" and etud.DateNaiss != "" and verifier_etudiant is False and cas.Num_casier != "":
+        if etud.NomEtud != "" and etud.NumEtud != "" and etud.DateNaiss != "" and verifier_etudiant is False \
+                and cas.Num_casier != "" and verifier_casier is False:
             #Ajouter l'objet instancié à la liste des étudiants
             ls_Etudiants.append(etud)
             lst_casier.append(cas)
@@ -157,36 +165,6 @@ class fenetrePrincipale(QtWidgets.QMainWindow, interfacegraphique.Ui_MainWindow)
             self.lineEdit_nom.clear()
             self.dateEdit_DNaiss.setDate(QDate(2000, 1, 1))
             self.line_num_c.clear()
-
-
-    @pyqtSlot()
-    def on_BT_casier_clicked(self):
-        print("a.0")
-        cas = Casier()
-        print("a.1")
-        num_E = self.lineEdit_numero.text()
-        cas.taille = self.CB_taille.currentText()
-        print("a.2")
-        cas.localisation = self.CB_localisation.currentText()
-        print("a.3")
-        cas.Num_casier = self.line_num_c.text()
-        print("b")
-        if num_E.isnumeric() is True:
-            for e in ls_Etudiants:
-                if e.NumEtud == num_E:
-                    self.line_num_c.setText(e.casier.Num_casier)
-                    self.CB_taille.setCurrentText(e.casier.taille)
-                    self.CB_localisation.setCurrentText(e.casier.localisation)
-        verifier_casier = verifier_lst_casier(cas.Num_casier)
-        if verifier_casier is True:
-            self.line_num_c.clear()
-            self.MS_e_num_c2.setVisible(True)
-        if cas.Num_casier == "":
-            self.line_num_c.clear()
-            self.MS_e_num_c1.setVisible(True)
-        if cas.Num_casier != "":
-            lst_casier.append(cas)
-
 
 
     @pyqtSlot()
@@ -207,9 +185,10 @@ class fenetrePrincipale(QtWidgets.QMainWindow, interfacegraphique.Ui_MainWindow)
         etud.Programme = self.comboBox_programme.currentText()
         cas.taille = self.CB_taille.currentText()
         cas.localisation = self.CB_localisation.currentText()
-        cas.Num_casier = self.line_num_c.text()
+        cas.Num_casier = self.line_num_c.text().lower()
         # Booleen qui nous informe si le numéro d'étudiant existe ou pas dans la liste des étudiants
         verifier_etudiant = verifier_etudiant_liste(etud.NumEtud)
+        verifier_casier = verifier_lst_casier(cas.Num_casier)
         # Si le numéro d'étudiant est valide mais existe déjà dans la liste des étudiants (on ne peut donc pas l'ajouter)
         if verifier_etudiant is False and etud.NumEtud != "":
             # Effacer le lineEdit du numéro étudiant et afficher le message d'erreur
@@ -230,26 +209,29 @@ class fenetrePrincipale(QtWidgets.QMainWindow, interfacegraphique.Ui_MainWindow)
             self.line_num_c.clear()
             self.MS_e_num_c1.setVisible(True)
         # Si les informations entrées sont valides et l'étudiant n'existe pas dans la liste des étudiants
-        if etud.NomEtud != "" and etud.NumEtud != "" and etud.DateNaiss != "" and verifier_etudiant is True:
+        if etud.NomEtud != "" and etud.NumEtud != "" and etud.DateNaiss != "" and cas.Num_casier != "" \
+                and verifier_etudiant is True and verifier_casier is True:
             for elt in ls_Etudiants:
                 # Chercher dans la liste des étudiants un étudiant ayant le numéro d'étudiant entré
                 if elt.NumEtud == self.lineEdit_numero.text():
-                    # Apporter les modifications aux attributs Nom_Etud, Programme et Date_Naiss
-                    elt.NomEtud = self.lineEdit_nom.text().capitalize()
-                    elt.Programme = self.comboBox_programme.currentText()
-                    elt.DateNaiss = self.dateEdit_DNaiss.date()
-                    elt.cas.Num_casier = self.line_num_c
-                    elt.cas.taille = self.CB_taille
-                    elt.cas.localisation = self.CB_localisation
+                        if c.Num_casier == self.line_num_c.text():
+                            # Apporter les modifications aux attributs Nom_Etud, Programme et Date_Naiss
+                            elt.NomEtud = self.lineEdit_nom.text().capitalize()
+                            elt.Programme = self.comboBox_programme.currentText()
+                            elt.DateNaiss = self.dateEdit_DNaiss.date()
+                            c.Num_casier = self.line_num_c
+                            c.taille = self.CB_taille
+                            c.localisation = self.CB_localisation
             # Effacer le textBowser
             self.textBrowser_afficher.clear()
             # Après modifications, réfficher tous les étudiants de la liste dans le textBrowser
             for elt in ls_Etudiants:
-                self.textBrowser_afficher.append(elt.__str__())
+                self.textBrowser_afficher.append(elt.__str__() + cas.__str__())
             # Réinitialiser les lineEdits du numéro et du nom et le dateEdit
             self.lineEdit_numero.clear()
             self.lineEdit_nom.clear()
             self.dateEdit_DNaiss.setDate(QDate(2000, 1, 1))
+            self.line_num_c.clear()
 
     @pyqtSlot()
     # Bouton Supprimer
