@@ -1,6 +1,5 @@
 
 
-
 class Casier:
     def __init__(self, numero_casier = "", taille_casier = "", localisation_casier = "", prix_casier = 20):
         self.__num = numero_casier
@@ -29,4 +28,4 @@ class Casier:
     def __str__(self):
         chaine = (f" {self.__num} \n taille: {self.taille} \n localistion: {self.localisation} \n prix: {self.__prix} "
                 f"\n*************************")
-        return chaine
+        return

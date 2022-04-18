@@ -157,7 +157,6 @@ class fenetrePrincipale(QtWidgets.QMainWindow, interfacegraphique.Ui_MainWindow)
                 and cas.Num_casier != "" and verifier_casier is False:
             #Ajouter l'objet instancié à la liste des étudiants
             ls_Etudiants.append(etud)
-            lst_casier.append(cas)
             # Ajouter les informations de l'étudiant entré au TextBrowser
             self.textBrowser_afficher.append(etud.__str__() + cas.__str__())
             # Réinitialiser les lineEdits du nom, du numéro d'étudiant et du dateEdit
