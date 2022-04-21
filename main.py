@@ -36,7 +36,12 @@ from Etudiant import *
 # Déclarer une liste d'étudiants
 ls_Etudiants = []
 C1 = Casier("a1234", "Petit", "A", 20)
+test = Etudiant("12", "bob", "Administration", "2000, 1, 1", C1)
 
+C2 = Casier("a4321", "Moyen", "B", 20)
+test2 = Etudiant("11", "jac", "Administration", "2000, 1, 1", C2)
+ls_Etudiants.append(test)
+ls_Etudiants.append(test2)
 
 #######################################
 ###### DÉFINITIONS DES FONCTIONS ######
@@ -75,6 +80,7 @@ def cacher_labels_erreur(objet):
     objet.label_erreur_Etu_Inexistant.setVisible(False)
     objet.MS_e_num_c1.setVisible(False)
     objet.MS_e_num_c2.setVisible(False)
+    objet.MS_e_num_c3.setVisible(False)
     objet.label_erreur_fichier.setText("")
 
 ########################################################
@@ -104,8 +110,7 @@ class fenetrePrincipale(QtWidgets.QMainWindow, interfacegraphique.Ui_MainWindow)
         self.setWindowTitle("Gestion de scolarité")
         # Cacher tous les labels d'erreur
         cacher_labels_erreur(self)
-        test = Etudiant("12", "bob", "Administration", "2003, 12, 18", C1)
-        ls_Etudiants.append(test)
+
 
     # Utiliser le décorateur ici pour empêcher que le code du gestionnaire d'événement du bouton ne s'éxecute deux fois
     @pyqtSlot()
@@ -131,10 +136,10 @@ class fenetrePrincipale(QtWidgets.QMainWindow, interfacegraphique.Ui_MainWindow)
         verifier_etudiant = verifier_etudiant_liste(etud.NumEtud)
         verifier_casier = verifier_lst_casier(cas.Num_casier)
         # Si le numéro d'étudiant est valide mais existe déjà dans la liste des étudiants (on ne peut donc pas l'ajouter)
-        if verifier_casier is True:
+        if verifier_casier is True and cas.Num_casier != "":
             self.line_num_c.clear()
             self.MS_e_num_c2.setVisible(True)
-        if verifier_etudiant is True:
+        if verifier_etudiant is True and etud.NumEtud != "":
             # Effacer le lineEdit du numéro étudiant et afficher le message d'erreur
             self.lineEdit_numero.clear()
             self.label_erreur_Etu_Existe.setVisible(True)
@@ -189,10 +194,13 @@ class fenetrePrincipale(QtWidgets.QMainWindow, interfacegraphique.Ui_MainWindow)
         verifier_etudiant = verifier_etudiant_liste(etud.NumEtud)
         verifier_casier = verifier_lst_casier(cas.Num_casier)
         # Si le numéro d'étudiant est valide mais existe déjà dans la liste des étudiants (on ne peut donc pas l'ajouter)
-        if verifier_etudiant is False and etud.NumEtud != "":
+        if verifier_etudiant is False:
             # Effacer le lineEdit du numéro étudiant et afficher le message d'erreur
             self.lineEdit_numero.clear()
             self.label_erreur_Etu_Inexistant.setVisible(True)
+        if verifier_casier is False:
+            self.line_num_c.clear()
+            self.MS_e_num_c3.setVisible(True)
         # si le nom est invalide, afficher un message d'erreur
         if etud.NomEtud == "":
             self.lineEdit_nom.clear()
@@ -213,19 +221,18 @@ class fenetrePrincipale(QtWidgets.QMainWindow, interfacegraphique.Ui_MainWindow)
             for elt in ls_Etudiants:
                 # Chercher dans la liste des étudiants un étudiant ayant le numéro d'étudiant entré
                 if elt.NumEtud == self.lineEdit_numero.text():
-                        if c.Num_casier == self.line_num_c.text():
                             # Apporter les modifications aux attributs Nom_Etud, Programme et Date_Naiss
                             elt.NomEtud = self.lineEdit_nom.text().capitalize()
                             elt.Programme = self.comboBox_programme.currentText()
                             elt.DateNaiss = self.dateEdit_DNaiss.date()
-                            c.Num_casier = self.line_num_c
-                            c.taille = self.CB_taille
-                            c.localisation = self.CB_localisation
+                            elt.casier.Num_casier = self.line_num_c.text()
+                            elt.casier.taille = self.CB_taille.currentText()
+                            elt.casier.localisation = self.CB_localisation.currentText()
             # Effacer le textBowser
             self.textBrowser_afficher.clear()
             # Après modifications, réfficher tous les étudiants de la liste dans le textBrowser
             for elt in ls_Etudiants:
-                self.textBrowser_afficher.append(elt.__str__() + cas.__str__())
+                self.textBrowser_afficher.append(elt.__str__())
             # Réinitialiser les lineEdits du numéro et du nom et le dateEdit
             self.lineEdit_numero.clear()
             self.lineEdit_nom.clear()
@@ -242,21 +249,31 @@ class fenetrePrincipale(QtWidgets.QMainWindow, interfacegraphique.Ui_MainWindow)
         cacher_labels_erreur(self)
         # Instancier un objet Eudiant
         etud = Etudiant()
+        cas = Casier()
         # Entrée de donnée pour les attributs de l'objet Etudiant
         etud.NomEtud = self.lineEdit_nom.text().capitalize()
         etud.NumEtud = self.lineEdit_numero.text()
         etud.DateNaiss = self.dateEdit_DNaiss.date()
         etud.Programme = self.comboBox_programme.currentText()
+        cas.taille = self.CB_taille.currentText()
+        cas.localisation = self.CB_localisation.currentText()
+        cas.Num_casier = self.line_num_c.text().lower()
         # Booleen qui nous informe si le numéro d'étudiant existe ou pas dans la liste des étudiants
         verifier_etudiant = verifier_etudiant_liste(etud.NumEtud)
+        verifier_casier = verifier_lst_casier(cas.Num_casier)
         # Si le nom, le numéro et la date de naissance sont valides et l'étudiant existe dans la liste des étudiants:
-        if etud.NomEtud != "" and etud.NumEtud != "" and etud.DateNaiss != "" and verifier_etudiant is True:
+        if etud.NomEtud != "" and etud.NumEtud != "" and etud.DateNaiss != "" and cas.Num_casier != "" \
+                and verifier_casier is True and verifier_etudiant is True:
             trouve = False
             for elt in ls_Etudiants:
                 # # Chercher dans la liste des étudiants un étudiant ayant les informations entrées
-                if elt.NumEtud == self.lineEdit_numero.text() and elt.NomEtud == self.lineEdit_nom.text().capitalize()\
-                                and elt.Programme == self.comboBox_programme.currentText() \
-                                and elt.DateNaiss == self.dateEdit_DNaiss.date():
+                date = self.dateEdit_DNaiss.date() # change format de date pour comparer
+                if elt.NumEtud == self.lineEdit_numero.text() and elt.NomEtud == self.lineEdit_nom.text() \
+                        and elt.DateNaiss == f"{date.year()}, {date.month()}, {date.day()}" \
+                        and elt.Programme == self.comboBox_programme.currentText() \
+                        and elt.casier.Num_casier == self.line_num_c.text() \
+                        and elt.casier.taille == self.CB_taille.currentText() \
+                        and elt.casier.localisation == self.CB_localisation.currentText():
                     # Supprimer l'étudiant de la liste des étudiants
                     trouve = True
                     ls_Etudiants.remove(elt)
@@ -273,11 +290,15 @@ class fenetrePrincipale(QtWidgets.QMainWindow, interfacegraphique.Ui_MainWindow)
                 self.lineEdit_numero.clear()
                 self.lineEdit_nom.clear()
                 self.dateEdit_DNaiss.setDate(QDate(2000,1,1))
+                self.line_num_c.clear()
                 # Si le numéro d'étudiant est valide mais existe déjà dans la liste (on ne peut donc pas l'ajouter)
-        if verifier_etudiant is False and etud.NumEtud != "" :
+        if verifier_etudiant is False:
             # Effacer le lineEdit du numéro étudiant et afficher le message d'erreur
             self.lineEdit_numero.clear()
             self.label_erreur_Etu_Inexistant.setVisible(True)
+        if verifier_casier is False:
+            self.line_num_c.clear()
+            self.MS_e_num_c3.setVisible(True)
         # si le nom est invalide, afficher un message d'erreur
         if etud.NomEtud == "":
             self.lineEdit_nom.clear()
