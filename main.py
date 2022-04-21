@@ -170,6 +170,42 @@ class fenetrePrincipale(QtWidgets.QMainWindow, interfacegraphique.Ui_MainWindow)
             self.dateEdit_DNaiss.setDate(QDate(2000, 1, 1))
             self.line_num_c.clear()
 
+    @pyqtSlot()
+    # Bouton Supprimer
+    def on_BT_cour_clicked(self):
+        # Instancier une boite de dialogue FenetreListview
+        dialog = Fenetrelistview() # nomde la classe du pop up
+        # Préparer la listview
+        model = QStandardItemModel()
+        dialog.listView_etudiants.setModel(model)
+        for e in ls_Etudiants:
+            item = QStandardItem(e.NumEtud+" * "+e.NomEtud + " * " + e.Programme )
+            model.appendRow(item)
+        #Afficher la boite de dialogue
+        dialog.show()
+        reply = dialog.exec_()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @pyqtSlot()
     # Bouton Modifier

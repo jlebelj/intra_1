@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>963</width>
+    <width>964</width>
     <height>780</height>
    </rect>
   </property>
@@ -145,7 +145,7 @@
     <property name="geometry">
      <rect>
       <x>790</x>
-      <y>600</y>
+      <y>620</y>
       <width>151</width>
       <height>51</height>
      </rect>
@@ -180,7 +180,7 @@
    <widget class="QLabel" name="label_programme">
     <property name="geometry">
      <rect>
-      <x>510</x>
+      <x>490</x>
       <y>410</y>
       <width>271</width>
       <height>41</height>
@@ -202,7 +202,7 @@
    <widget class="QComboBox" name="comboBox_programme">
     <property name="geometry">
      <rect>
-      <x>510</x>
+      <x>490</x>
       <y>460</y>
       <width>291</width>
       <height>51</height>
@@ -251,7 +251,7 @@
     <property name="geometry">
      <rect>
       <x>790</x>
-      <y>670</y>
+      <y>680</y>
       <width>151</width>
       <height>51</height>
      </rect>
@@ -436,7 +436,7 @@
     <property name="geometry">
      <rect>
       <x>790</x>
-      <y>530</y>
+      <y>560</y>
       <width>151</width>
       <height>51</height>
      </rect>
@@ -453,7 +453,7 @@
    <widget class="QLabel" name="label_num_c">
     <property name="geometry">
      <rect>
-      <x>510</x>
+      <x>490</x>
       <y>10</y>
       <width>271</width>
       <height>31</height>
@@ -475,7 +475,7 @@
    <widget class="QLabel" name="label_taille">
     <property name="geometry">
      <rect>
-      <x>510</x>
+      <x>490</x>
       <y>300</y>
       <width>171</width>
       <height>41</height>
@@ -497,7 +497,7 @@
    <widget class="QComboBox" name="CB_localisation">
     <property name="geometry">
      <rect>
-      <x>510</x>
+      <x>490</x>
       <y>240</y>
       <width>291</width>
       <height>51</height>
@@ -525,7 +525,7 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>510</x>
+      <x>490</x>
       <y>110</y>
       <width>451</width>
       <height>31</height>
@@ -548,7 +548,7 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>510</x>
+      <x>490</x>
       <y>140</y>
       <width>221</width>
       <height>31</height>
@@ -568,7 +568,7 @@
    <widget class="QLineEdit" name="line_num_c">
     <property name="geometry">
      <rect>
-      <x>510</x>
+      <x>490</x>
       <y>50</y>
       <width>281</width>
       <height>51</height>
@@ -584,7 +584,7 @@
    <widget class="QLabel" name="label_casier">
     <property name="geometry">
      <rect>
-      <x>510</x>
+      <x>490</x>
       <y>190</y>
       <width>171</width>
       <height>41</height>
@@ -606,7 +606,7 @@
    <widget class="QComboBox" name="CB_taille">
     <property name="geometry">
      <rect>
-      <x>510</x>
+      <x>490</x>
       <y>350</y>
       <width>291</width>
       <height>51</height>
@@ -634,7 +634,7 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>510</x>
+      <x>490</x>
       <y>170</y>
       <width>271</width>
       <height>31</height>
@@ -651,13 +651,31 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Le numero de casier est inexistant.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="BT_cour">
+    <property name="geometry">
+     <rect>
+      <x>790</x>
+      <y>500</y>
+      <width>151</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>cour</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>963</width>
+     <width>964</width>
      <height>26</height>
     </rect>
    </property>
