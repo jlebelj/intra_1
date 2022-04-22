@@ -23,7 +23,7 @@ from PyQt5.QtGui import QStandardItemModel, QStandardItem
 # importer les interfaces graphiques
 import interfacegraphique
 from listview_dialog import *
-
+from listview_cour import *
 # Importer la classe Etudiant
 from Etudiant import *
 
@@ -174,38 +174,12 @@ class fenetrePrincipale(QtWidgets.QMainWindow, interfacegraphique.Ui_MainWindow)
     # Bouton Supprimer
     def on_BT_cour_clicked(self):
         # Instancier une boite de dialogue FenetreListview
-        dialog = Fenetrelistview() # nomde la classe du pop up
+        dialog = Fenetre_listview_cour() # nomde la classe du pop up
         # Préparer la listview
         model = QStandardItemModel()
-        dialog.listView_etudiants.setModel(model)
-        for e in ls_Etudiants:
-            item = QStandardItem(e.NumEtud+" * "+e.NomEtud + " * " + e.Programme )
-            model.appendRow(item)
         #Afficher la boite de dialogue
         dialog.show()
         reply = dialog.exec_()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @pyqtSlot()
     # Bouton Modifier

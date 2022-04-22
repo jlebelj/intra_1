@@ -19,7 +19,7 @@ class Etudiant:
     ###################################
     #####  MÉTHODE CONSTRUCTEUR  #####
     ###################################
-    def __init__(self,p_num="",p_nom="",p_prog="",p_date_naiss="", casier_etudiant = ""):
+    def __init__(self,p_num="",p_nom="",p_prog="",p_date_naiss="", p_casier_etudiant = "", p_liste_cour = []):
         """
                 Méthode de type Constructeur avec paramètres et valeurs par défaut
                 Définition des attributs publics d'un étudiant
@@ -28,7 +28,8 @@ class Etudiant:
         self.__nom_etud = p_nom
         self.Programme = p_prog
         self.__date_naiss = p_date_naiss
-        self.casier = casier_etudiant
+        self.casier = p_casier_etudiant
+        self.lst_cour = p_liste_cour
 
     ##################################################
     ####   Propriétés, accesseurs et mutateurs    ####
