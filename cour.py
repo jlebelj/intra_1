@@ -63,6 +63,7 @@ class Cour:
         output += (f"Sigle du cour: {self.__sigle_cour}\n")
         output += (f"Titre du cour: {self.__titre_cour}\n")
         output += (f"Nombre d'heure du cour: {self.__nb_heure}\n")
+        output = ("*************************\n")
         return output
 
 
