@@ -62,7 +62,6 @@ class Fenetre_listview_cour(QtWidgets.QDialog, interface_pop_cour.Ui_Dialog):
             self.line_num_cour.clear()
             self.MS_e_num_inex.setVisible(True)
 
-
         for elt in ls_Etudiants:
             if elt.NumEtud == etud.NumEtud.capitalize():
                 for c in ls_cour:
