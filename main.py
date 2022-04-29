@@ -24,11 +24,9 @@ from PyQt5.QtGui import QStandardItemModel, QStandardItem
 import interfacegraphique
 from listview_dialog import *
 from listview_cour import *
+from listview_local import *
 # Importer la classe Etudiant
 from Etudiant import *
-
-
-
 ##########################################################
 ###  DÉCLARATIONS ET INITIALISATIONS - Portée globale  ###
 ##########################################################
@@ -111,7 +109,6 @@ class fenetrePrincipale(QtWidgets.QMainWindow, interfacegraphique.Ui_MainWindow)
         # Cacher tous les labels d'erreur
         cacher_labels_erreur(self)
 
-
     # Utiliser le décorateur ici pour empêcher que le code du gestionnaire d'événement du bouton ne s'éxecute deux fois
     @pyqtSlot()
     # Bouton Ajouter
@@ -161,9 +158,10 @@ class fenetrePrincipale(QtWidgets.QMainWindow, interfacegraphique.Ui_MainWindow)
         if etud.NomEtud != "" and etud.NumEtud != "" and etud.DateNaiss != "" and verifier_etudiant is False \
                 and cas.Num_casier != "" and verifier_casier is False:
             #Ajouter l'objet instancié à la liste des étudiants
+            etud.casier = cas
             ls_Etudiants.append(etud)
             # Ajouter les informations de l'étudiant entré au TextBrowser
-            self.textBrowser_afficher.append(etud.__str__() + cas.__str__())
+            self.textBrowser_afficher.append(etud.__str__() )
             # Réinitialiser les lineEdits du nom, du numéro d'étudiant et du dateEdit
             self.lineEdit_numero.clear()
             self.lineEdit_nom.clear()
@@ -178,6 +176,17 @@ class fenetrePrincipale(QtWidgets.QMainWindow, interfacegraphique.Ui_MainWindow)
         # Préparer la listview
         model = QStandardItemModel()
         #Afficher la boite de dialogue
+        dialog.show()
+        reply = dialog.exec_()
+
+    @pyqtSlot()
+    # Bouton Supprimer
+    def on_BT_local_clicked(self):
+        # Instancier une boite de dialogue FenetreListview
+        dialog = Fenetre_listview_local()  # nomde la classe du pop up
+        # Préparer la listview
+        model = QStandardItemModel()
+        # Afficher la boite de dialogue
         dialog.show()
         reply = dialog.exec_()
 

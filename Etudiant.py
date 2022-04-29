@@ -9,7 +9,7 @@
 import datetime
 import json
 from casier import Casier
-
+from local import Local
 class Etudiant:
     """
     Classe Etudiant
@@ -19,7 +19,7 @@ class Etudiant:
     ###################################
     #####  MÉTHODE CONSTRUCTEUR  #####
     ###################################
-    def __init__(self,p_num="",p_nom="",p_prog="",p_date_naiss="", p_casier_etudiant = "", p_liste_cour = []):
+    def __init__(self,p_num="",p_nom="",p_prog="",p_date_naiss="", p_casier_etudiant = Casier(), p_liste_cour = [], p_local = Local()):
         """
                 Méthode de type Constructeur avec paramètres et valeurs par défaut
                 Définition des attributs publics d'un étudiant
@@ -30,12 +30,13 @@ class Etudiant:
         self.__date_naiss = p_date_naiss
         self.casier = p_casier_etudiant
         self.lst_cour = p_liste_cour
+        self.local = p_local
+
 
     ##################################################
     ####   Propriétés, accesseurs et mutateurs    ####
     ####                                          ####
     ##################################################
-
     # Propriété NomEtud
     def _get_num_etud(self):
         """
@@ -99,7 +100,8 @@ class Etudiant:
         output += (f"Numero: {self.__num_etud}\n")
         output += (f"Prenom: {self.Programme}\n")
         output += (f"Date de naissance: {self.__date_naiss}\n")
-        output += (f"Numero du casier: {self.casier}\n")
+        output += (f"Numero du casier: {self.casier.__str__()}\n")
+        output += ("*************************\n")
         return output
 
     ############################################

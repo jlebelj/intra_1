@@ -26,6 +26,5 @@ class Casier:
 
 
     def __str__(self):
-        chaine = (f" {self.__num} \n taille: {self.taille} \n localistion: {self.localisation} \n prix: {self.__prix} "
-                f"\n*************************")
+        chaine = (f" {self.__num} \n taille: {self.taille} \n localistion: {self.localisation} \n prix: {self.__prix}")
         return chaine
